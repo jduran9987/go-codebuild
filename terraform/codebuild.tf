@@ -51,5 +51,5 @@ resource "aws_codebuild_project" "golang" {
 resource "aws_codebuild_source_credential" "example" {
   auth_type   = "PERSONAL_ACCESS_TOKEN"
   server_type = "GITHUB"
-  token       = "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"
+  token       = "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"
 }
