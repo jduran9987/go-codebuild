@@ -38,6 +38,15 @@ resource "aws_iam_role_policy" "codebuild" {
     {
       "Effect": "Allow",
       "Action": [
+        "ecr:GetAuthorizationToken" 
+      ],
+      "Resource": [
+        "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
         "ec2:CreateNetworkInterface",
         "ec2:DescribeDhcpOptions",
         "ec2:DescribeNetworkInterfaces",
