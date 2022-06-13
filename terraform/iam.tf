@@ -8,7 +8,10 @@ resource "aws_iam_role" "codebuild" {
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "codebuild.amazonaws.com"
+        "Service": [
+          "codebuild.amazonaws.com",
+          "events.amazonaws.com"
+        ]
       },
       "Action": "sts:AssumeRole"
     }
@@ -42,6 +45,15 @@ resource "aws_iam_role_policy" "codebuild" {
       ],
       "Resource": [
         "*"
+      ]
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "codebuild:StartBuild"
+      ],
+      "Resource": [
+        "${aws_codebuild_project.golang.arn}"
       ]
     },
     {

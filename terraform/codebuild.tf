@@ -17,6 +17,7 @@ resource "aws_codebuild_project" "golang" {
     image = "aws/codebuild/standard:1.0"
     type = "LINUX_CONTAINER"
     image_pull_credentials_type = "CODEBUILD"
+    privileged_mode = true
 
     environment_variable {
       name = "ECR_IMAGE_REPO"
@@ -51,5 +52,5 @@ resource "aws_codebuild_project" "golang" {
 resource "aws_codebuild_source_credential" "example" {
   auth_type   = "PERSONAL_ACCESS_TOKEN"
   server_type = "GITHUB"
-  token       = "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"
+  token       = "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"
 }
