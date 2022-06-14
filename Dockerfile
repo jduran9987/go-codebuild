@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM golang:1.17 
+FROM public.ecr.aws/docker/library/golang:1.17-buster
 
 WORKDIR /app 
 COPY go.mod ./
