@@ -1,5 +1,4 @@
 resource "aws_s3_bucket" "cache" {
-  count = 1
   bucket = "${local.account_id}-codebuild"
 }
 
