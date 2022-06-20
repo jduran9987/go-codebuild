@@ -63,7 +63,6 @@ resource "aws_codebuild_webhook" "github" {
       pattern = "^refs/heads/main$"
     }
   }
-
 }
 
 resource "aws_codebuild_source_credential" "example" {
