@@ -5,7 +5,12 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - ./dockerTagging.sh
+      - echo "CODEBUILD_WEBHOOK_BASE_REF $CODEBUILD_WEBHOOK_BASE_REF"
+      - echo "CODEBUILD_WEBHOOK_EVENT $CODEBUILD_WEBHOOK_EVENT"
+      - echo "CODEBUILD_WEBHOOK_HEAD_REF $CODEBUILD_WEBHOOK_HEAD_REF"
+      - echo "CODEBUILD_WEBHOOK_TRIGGER $CODEBUILD_WEBHOOK_TRIGGER"
+      - echo "CODEBUILD_RESOLVED_SOURCE_VERSION $CODEBUILD_RESOLVED_SOURCE_VERSION"
+      - echo "CODEBUILD_SOURCE_VERSION $CODEBUILD_SOURCE_VERSION"
 
   build:
     commands:
