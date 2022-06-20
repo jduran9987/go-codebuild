@@ -49,6 +49,23 @@ resource "aws_codebuild_project" "golang" {
   source_version = "main"
 }
 
+resource "aws_codebuild_webhook" "github" {
+  project_name = aws_codebuild_project.golang.name
+  build_type = "BUILD"
+  filter_group {
+    filter {
+      type = "EVENT"
+      pattern = "PULL_REQUEST_CREATED, PULL_REQUEST_UPDATED, PULL_REQUEST_REOPENED, PULL_REQUEST_MERGED"
+    }
+
+    filter {
+      type = "BASE_REF"
+      pattern = "^refs/heads/main$"
+    }
+  }
+
+}
+
 resource "aws_codebuild_source_credential" "example" {
   auth_type   = "PERSONAL_ACCESS_TOKEN"
   server_type = "GITHUB"
