@@ -14,6 +14,9 @@ phases:
 
   build:
     commands:
+      - echo Setting up the docker image tag ...
+      - ./dockerTagging.sh 
+      - echo "IMAGE_TAG $IMAGE_TAG"
       - echo Build started on `date`
       - echo Building the Docker image ...
       - docker build -t $ECR_IMAGE_REPO:$IMAGE_TAG .
