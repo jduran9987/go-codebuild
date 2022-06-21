@@ -25,11 +25,6 @@ resource "aws_codebuild_project" "golang" {
     }
 
     environment_variable {
-      name = "IMAGE_TAG"
-      value = "latest"
-    }
-
-    environment_variable {
       name = "AWS_ACCOUNT"
       value = "${local.account_id}"
     }
