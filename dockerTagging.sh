@@ -1,11 +1,11 @@
 #!/bin/bash
 
-export IMAGE_TAG=latest
+set -eux
 
-if [ "$CODEBUILD_SOURCE_VERSION" != "main" ] && { [ "$CODEBUILD_WEBHOOK_BASE_REF" != "refs/heads/main" ] || [ "$CODEBUILD_WEBHOOK_BASE_REF" = "" ]; }
+if [ "$CODEBUILD_WEBHOOK_TRIGGER" = "PULL_REQUEST_MERGED" ] || [ "$CODEBUILD_SOURCE_VERSION" = "" ] || [ "$CODEBUILD_SOURCE_VERSION" = "main"]
 then
+    export IMAGE_TAG=latest
+else
     export DATE_SUFFIX=$(date +%s)
     export IMAGE_TAG=$CODEBUILD_RESOLVED_SOURCE_VERSION-$DATE_SUFFIX
 fi
-
-echo $IMAGE_TAG
