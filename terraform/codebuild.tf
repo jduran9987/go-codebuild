@@ -45,8 +45,6 @@ resource "aws_codebuild_project" "golang" {
     location = "https://github.com/jduran9987/go-codebuild.git"
     git_clone_depth = 1
   }
-
-  source_version = "main"
 }
 
 resource "aws_codebuild_webhook" "github" {
