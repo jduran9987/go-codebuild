@@ -1,8 +1,8 @@
 #!/bin/bash
 
-set -eu
+set -e
 
-if [ "$CODEBUILD_WEBHOOK_EVENT" = "PULL_REQUEST_MERGED" ] || [ "$CODEBUILD_SOURCE_VERSION" = "" ] || [ "$CODEBUILD_SOURCE_VERSION" = "main"]
+if [ "$CODEBUILD_WEBHOOK_EVENT" = "PULL_REQUEST_MERGED" ] || [ "$CODEBUILD_SOURCE_VERSION" = "" ] || [ "$CODEBUILD_SOURCE_VERSION" = "main" ]
 then
     export IMAGE_TAG=latest
 else
